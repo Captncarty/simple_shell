@@ -1,6 +1,6 @@
 <h1 align ="center">simple_shell</h1><br>
 <p align ="center">
-    <img width="240" height="250" src="http://honisoit.com/wp-content/uploads/2018/10/encodingliteracy.jpg">
+    <img width="400" height="400" src="https://miro.medium.com/max/720/1*2DeyDPxAICKbpV9Iyo_EHQ.jpeg">
 </p>
 
 ------------
