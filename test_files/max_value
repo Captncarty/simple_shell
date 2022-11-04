@@ -1,0 +1,3 @@
+#!/bin/sh
+echo maximum value of process ID
+cat /proc/sys/kernel/pid_max
