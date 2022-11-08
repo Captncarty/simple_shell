@@ -1,0 +1,4 @@
+#!/bin/sh
+echo maximum value of pid_value
+cat /proc/sys/kernel/pid_max
+
