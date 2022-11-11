@@ -76,7 +76,6 @@ int change_dir(const char *path);
 /*======================*/
 
 void execute(char **command, char *name, char **env, int cicles);
-void print_env(char **env);
 char **_getPATH(char **env);
 void msgerror(char *name, int cicles, char **command);
 
@@ -100,26 +99,38 @@ void free_exit(char **command);
 int _strcmp(char *s1, char *s2);
 unsigned int _strlen(const char *s);
 char *_strcpy(char *dest, char *src);
-int _atoi(char *s);
 char *_strcat(char *dest, char *src);
+int _strncmp(const char *s1, const char *s2, size_t n);
+
+
+/*=====================*/
+/*   Ascii functions   */
+/*=====================*/
+
+int _atoi(char *s);
 char *_itoa(int num);
+int num_len(int num);
+
+/*=====================*/
+/*    Errors check     */
+/*=====================*/
+
 char *error_2_syntax(char **args);
 char *error_2_cd(char **args);
 char *error_2_exit(char **args);
 char *error_1(char **args);
 char *error_env(char **args);
-
-int num_len(int num);
-char *_itoa(int num);
 int create_error(char **args, int err);
-
-
 char *error_126(char **args);
 char *error_127(char **args);
+
+/*=====================*/
+/*    Env functions    */
+/*=====================*/
 
 char **_copyenv(void);
 void free_env(void);
 char **_getenv(const char *var);
+void print_env(char **env);
 
-int _strncmp(const char *s1, const char *s2, size_t n);
 #endif  /* SHELL_H */
