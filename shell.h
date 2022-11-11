@@ -115,14 +115,14 @@ int num_len(int num);
 /*    Errors check     */
 /*=====================*/
 
-char *error_2_syntax(char **args);
-char *error_2_cd(char **args);
-char *error_2_exit(char **args);
+char *error_syntax(char **args);
+char *error_cd(char **args);
+char *error_exit(char **args);
 char *error_1(char **args);
 char *error_env(char **args);
 int create_error(char **args, int err);
-char *error_126(char **args);
-char *error_127(char **args);
+char *error_denied(char **args);
+char *error_not(char **args);
 
 /*=====================*/
 /*    Env functions    */
