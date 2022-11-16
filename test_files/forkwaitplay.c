@@ -1,7 +1,8 @@
 #include "mac.h"
 
 /**
-* @brief: more on fork + wait
+* main - more on fork + wait
+* return: 0 on success
 */
 
 int main(void)
@@ -15,7 +16,8 @@ int main(void)
 		perror("Error:");
 		return (1);
 	}
-	if (child_pid == 0) //skips this if no child
+	if (child_pid == 0)
+	/* skips this if no child */
 	{
 		printf("Wait for me, wait for me\n");
 		sleep(5);

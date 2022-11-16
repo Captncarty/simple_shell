@@ -2,8 +2,10 @@
 #include <unistd.h>
 
 /**
+* main - parent and child
 * ppid - parent
 * pid - child
+* return: 0 on success
 */
 
 int main(void)

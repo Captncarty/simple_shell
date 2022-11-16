@@ -16,7 +16,6 @@ int main(void)
 		printf("$ ");
 		getline(&buffer, &len, stdin);
 		printf("getline: %s", buffer);
-		
 		putchar('\n');
 
 		token = strtok(buffer, " ");

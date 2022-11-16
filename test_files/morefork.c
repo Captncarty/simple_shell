@@ -2,7 +2,7 @@
 #include <unistd.h>
 
 /**
-* @brief: messing with fork
+* main -  messing with fork
 * Return: favorable outcomes
 */
 
@@ -13,5 +13,5 @@ int main(void)
 
 	printf("enigma\n");
 
-	return 0;
+	return (0);
 }

@@ -2,8 +2,9 @@
 #include <unistd.h>
 
 /**
-* @info - breaking the shell
-* @1: system calls
+* main - breaking the shell
+* Description: system calls
+* return: 0 on success
 */
 
 int main(void)

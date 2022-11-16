@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * @brief: prints "$ "
+ * main - prints "$ "
  * wait for the user to enter a command,
  * prints it on the next line.
  * Return: Always 0 (success)
@@ -19,7 +19,6 @@ int main(void)
 		getline(&buffer, &len, stdin);
 		printf("%s", buffer);
 	}
-	
 	free(buffer);
 	exit(EXIT_SUCCESS);
 }

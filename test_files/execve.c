@@ -8,7 +8,7 @@
  */
 int main(void)
 {
-    char *argv[] = {"/bin/ls", "-la", "/usr/", NULL};
+	char *argv[] = {"/bin/ls", "-la", "/usr/", NULL};
 	char *env[] = {
 		"HOME=/",
 		"PATH=/bin/usr/bin",
@@ -17,13 +17,12 @@ int main(void)
 		"LOGNAME=Carty",
 		0
 	};
-    printf("Before execve\n");
-    if (execve(argv[0], argv, env) == -1)
-    {
-        perror("Error:");
-    }
-    printf("After execve\n");
-    return (0);
+	printf("Before execve\n");
+	if (execve(argv[0], argv, env) == -1)
+	{
+		perror("Error:");
+	}
+	printf("After execve\n");
+	return (0);
 }
-
 

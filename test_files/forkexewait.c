@@ -4,7 +4,7 @@
 #include <sys/wait.h>
 
 /**
- * @brief: fork + wait + execve
+ * main - fork, wait and  execve
  *
  * Return: Always 0
  */
