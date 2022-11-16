@@ -1,4 +1,4 @@
-#include "shell.h"
+#include <stdio.h>
 
 /**
 * main - Entry point
@@ -24,7 +24,7 @@ int main(void)
 
 /**
 * decimalToBinary - To convert decimal to binary number
-* @num: integer to print
+* @num: integer number to print
 * Return: binary number
 */
 
@@ -67,4 +67,5 @@ void compare(int num)
 	n = num << 2;
 	printf("%d\n", n);
 }
+
 
