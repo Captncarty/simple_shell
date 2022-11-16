@@ -18,9 +18,8 @@
 /*  Global variables   */
 /*=====================*/
 extern char **environ;
-char *name;
 int hist;
-
+char *name;
 
 /*=====================*/
 /*      Structures     */
