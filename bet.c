@@ -59,13 +59,12 @@ void compare(int num)
 {
 	/* an int to compare with */
 	unsigned int n;
-	
+
 	if (num == 0)
 	{
 		printf("NULL");
 	}
 	n = num << 2;
-	
 	printf("%d\n", n);
 }
 
