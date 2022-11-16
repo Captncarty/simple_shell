@@ -1,111 +1,87 @@
 #include "shell.h"
 
 /**
- * _strcmp - A funtion that compares two strings
- * @s1: string 1
- * @s2: string 2
- * Return: 1 if strings are the same, 0 if not
+ * _strncat - Concantenates two strings
+ * @dest: Pointer to destination string.
+ * @src: Pointer to source string.
+ * @n: n bytes to copy from src.
+ * Return: Pointer to destination string.
  */
-int _strcmp(char *s1, char *s2)
+char *_strncat(char *dest, const char *src, size_t n)
 {
-	unsigned int i = 0;
+	size_t dest_len = _strlen(dest);
+	size_t i;
 
-	while (s1[i])
+	for (i = 0; i < n && src[i] != '\0'; i++)
+		dest[dest_len + i] = src[i];
+	dest[dest_len + i] = '\0';
+
+	return (dest);
+}
+
+/**
+ * _strchr - Locates a character in a string.
+ * @s: The string to be searched.
+ * @c: The character to be located.
+ * Return: A pointer to the first occurence.
+ */
+char *_strchr(char *s, char c)
+{
+	int index;
+
+	for (index = 0; s[index]; index++)
 	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
+		if (s[index] == c)
+			return (s + index);
 	}
 
-	return (1);
+	return (NULL);
 }
 
-
 /**
- * _strlen - A function that finds the length of the string
- * @s: The input string
- * Return: The length of the string
+ * _strspn - Gets the length of a prefix substring.
+ * @s: The string to be searched.
+ * @accept: The prefix to be measured.
+ * Return: The number of bytes in s which
  */
-unsigned int _strlen(const char *s)
+int _strspn(char *s, char *accept)
 {
-	unsigned int len = 0;
+	int bytes = 0;
+	int index;
 
-	while (s[len])
-		len++;
-
-	return (len);
-}
-
-
-/**
- * _strcpy - A function that copies a string to another string
- * @dest: The pointer to the copyed string
- * @src: The pointer to string to copy for
- * Return: A pointer to copied string
- */
-char *_strcpy(char *dest, char *src)
-{
-	char *aux = dest;
-
-	while (*src)
-		*dest++ = *src++;
-	*dest = '\0';
-	return (aux);
-}
-
-
-/**
- * _strcat - a function that concatenates two strings.
- * @dest: an input string
- * @src: an input string
- * Return: A pointer to the resulting string
- */
-char *_strcat(char *dest, char *src)
-{
-	char *temp = dest;
-
-	while (*dest)
-		dest++;
-
-	*dest++ = '/';
-	while (*src)
-		*dest++ = *src++;
-	return (temp);
-}
-
-
-/**
- * _atoi - a function that converts string to integer.
- * @s: An input string.
- * Return: integer from conversion.
- */
-int _atoi(char *s)
-{
-	int sign = 1;
-	unsigned int total = 0;
-	char null_flag = 0;
-
-	if (s == NULL)
-		return (0);
 	while (*s)
 	{
-		if (*s == '-')
-			sign *= -1;
-		if (*s >= '0' && *s <= '9')
+		for (index = 0; accept[index]; index++)
 		{
-			null_flag = 1;
-			total = total * 10 + (*s - '0');
-		}
-		else if (*s < '0' || *s > '9')
-		{
-			if (null_flag == 1)
+			if (*s == accept[index])
+			{
+				bytes++;
 				break;
+			}
 		}
 		s++;
 	}
-	if (sign < 0)
-		total = (-1 * (total));
-	return (total);
+	return (bytes);
+}
+
+/**
+ * _strcmp - Compares two strings.
+ * @s1: The first string to be compared.
+ * @s2: The second string to be compared.
+ * Return: Positive byte difference if s1 > s2
+ */
+int _strcmp(char *s1, char *s2)
+{
+	while (*s1 && *s2 && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+	}
+
+	if (*s1 != *s2)
+		return (*s1 - *s2);
+
+	return (0);
 }
 
 /**
@@ -113,10 +89,7 @@ int _atoi(char *s)
  * @s1: Pointer to a string.
  * @s2: Pointer to a string.
  * @n: The first n bytes of the strings to compare.
- *
  * Return: Less than 0 if s1 is shorter than s2.
- *         0 if s1 and s2 match.
- *         Greater than 0 if s1 is longer than s2.
  */
 int _strncmp(const char *s1, const char *s2, size_t n)
 {

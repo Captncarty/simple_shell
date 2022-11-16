@@ -1,12 +1,53 @@
 #include "shell.h"
 
 /**
- * error_denied - Creates an error message for permission denied failures.
- * @args: An array of arguments passed to the command.
+ * create_error - Writes a custom error message to stderr.
+ * @args: An array of arguments.
+ * @err: The error value.
  *
+ * Return: The error value.
+ */
+int create_error(char **args, int err)
+{
+	char *error;
+
+	switch (err)
+	{
+	case -1:
+		error = error_env(args);
+		break;
+	case 1:
+		error = error_1(args);
+		break;
+	case 2:
+		if (*(args[0]) == 'e')
+			error = error_2_exit(++args);
+		else if (args[0][0] == ';' || args[0][0] == '&' || args[0][0] == '|')
+			error = error_2_syntax(args);
+		else
+			error = error_2_cd(args);
+		break;
+	case 126:
+		error = error_126(args);
+		break;
+	case 127:
+		error = error_127(args);
+		break;
+	}
+	write(STDERR_FILENO, error, _strlen(error));
+
+	if (error)
+		free(error);
+	return (err);
+
+}
+
+/**
+ * error_126 - Creates an error message for permission denied failures.
+ * @args: An array of arguments passed to the command.
  * Return: The error string.
  */
-char *error_denied(char **args)
+char *error_126(char **args)
 {
 	char *error, *hist_str;
 	int len;
@@ -35,12 +76,11 @@ char *error_denied(char **args)
 }
 
 /**
- * error_not - Creates an error message for command not found failures.
+ * error_127 - Creates an error message for command not found failures.
  * @args: An array of arguments passed to the command.
- *
  * Return: The error string.
  */
-char *error_not(char **args)
+char *error_127(char **args)
 {
 	char *error, *hist_str;
 	int len;
